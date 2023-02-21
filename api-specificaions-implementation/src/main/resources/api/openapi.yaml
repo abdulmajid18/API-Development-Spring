@@ -1,8 +1,7 @@
 openapi: 3.1.0
 info:
   title: Simple Ecommerce App
-  description: >
-    'This is a ***simple ecommerce app API*** Read more on swagger.io'
+  description: "This is a ***simple ecommerce app API*** Read more on swagger.io"
   termsOfService: https://github.com/abdulmajid18/API-Development-Spring
   contact:
     name: "Abdul-Majid"
