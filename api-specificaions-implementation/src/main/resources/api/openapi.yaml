@@ -12,7 +12,7 @@ info:
     url: https://github.com/abdulmajid18/API-Development-Spring
   version: 0.0.1
 externalDocs:
-  description: Document link you want to generate along with API.
+  description: Document link you want to generate along with API
   url: https://swagger.io
 servers:
   - url: https://ecommerce.swagger.io/v1
