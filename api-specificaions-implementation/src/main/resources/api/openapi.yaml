@@ -41,7 +41,7 @@ components:
           description: Collection of items in cart.
           type: array
           items:
-            $ref: '#/components/schemas/Item'
+            $ref: "#/components/schemas/Item"
     Item:
       description: Items in shopping cart
       type: object
@@ -58,7 +58,7 @@ components:
           type: number
           format: double
 paths:
-  /api/v1/carts/{customerId}/items
+  /api/v1/carts/{customerId}/items:
     post:
       tags:
         - cart
@@ -77,10 +77,10 @@ paths:
         content:
           application/xml:
             schema:
-              $ref: '#/components/schemas/Item'
+              $ref: "#/components/schemas/Item"
           application/json:
             schema:
-              $ref: '#/components/schemas/Item'
+              $ref: "#/components/schemas/Item"
       responses:
         201:
           description: Item added successfully
@@ -89,12 +89,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Item'
+                  $ref: "#/components/schemas/Item"
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Item'
+                  $ref: "#/components/schemas/Item"
         404:
           description: Given customer ID doesn't exist
           content: {}
