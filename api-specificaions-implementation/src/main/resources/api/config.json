@@ -1,0 +1,16 @@
+{
+    "library": "spring-mvc",
+    "dateLibrary": "java19",
+    "hideGenerationTimestamp": true,
+    "modelPackage": "com.rozz.apispecificationsimplementation.model",
+    "apiPackage": "com.rozz.apispecificationsimplementation.",
+    "invokerPackage": "com.rozz.apispecificationsimplementation.",
+    "serializableModel": true,
+    "useTags": true,
+    "useGzipFeature" : true,
+    "hateoas": true,
+    "withXml": true,
+    "importMappings": {
+    "Link": "org.springframework.hateoas.Link"
+    }
+}
