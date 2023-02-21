@@ -15,6 +15,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	swaggerCodegen 'org.openapitools:openapi-generator-cli:4.3.1'
+	compileOnly 'io.swagger:swagger-annotations:1.6.2'
+	compileOnly 'org.springframework.boot:spring-boot-starter-validation'
+	compileOnly 'org.openapitools:jackson-databind-nullable:0.2.1'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 }
 
 tasks.named('test') {
