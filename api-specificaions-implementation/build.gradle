@@ -9,25 +9,6 @@ group = 'com.rozz'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-repositories {
-	mavenCentral()
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
-	swaggerCodegen 'org.openapitools:openapi-generator-cli:4.3.1'
-	compileOnly 'io.swagger:swagger-annotations:1.6.2'
-	compileOnly 'org.springframework.boot:spring-boot-starter-validation'
-	compileOnly 'org.openapitools:jackson-databind-nullable:0.2.1'
-	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
-	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
-}
 
 swaggerSources {
   def typeMappings = 'URI=URI'
@@ -43,7 +24,7 @@ swaggerSources {
       rawOptions = ['--ignore-file-override', ignoreFile, '--type-mappings',
 										typeMappings, '--import-mappings', importMappings] as List<String>
       components = [models: true, apis: true, supportingFiles: 'ApiUtil.java']
-      //dependsOn validation // Should be uncommented once plugin starts supporting OA 3 validation
+      dependsOn validation // Should be uncommented once plugin starts supporting OA 3 validation
     }
   }
 }
@@ -51,3 +32,31 @@ swaggerSources {
 compileJava.dependsOn swaggerSources.eStore.code
 sourceSets.main.java.srcDir "${swaggerSources.eStore.code.outputDir}/src/main/java"
 sourceSets.main.resources.srcDir "${swaggerSources.eStore.code.outputDir}/src/main/resources"
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  // OpenAPI Starts
+  swaggerCodegen 'org.openapitools:openapi-generator-cli:5.4.0'
+	compileOnly 'io.swagger:swagger-annotations:1.6.2'
+	compileOnly 'org.springframework.boot:spring-boot-starter-validation'
+	compileOnly 'org.openapitools:jackson-databind-nullable:0.2.1'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+  // OpenAPI Ends
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+  testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+
