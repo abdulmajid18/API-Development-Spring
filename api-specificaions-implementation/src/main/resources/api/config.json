@@ -1,6 +1,6 @@
 {
     "library": "spring-mvc",
-    "dateLibrary": "java19",
+    "dateLibrary": "java17",
     "hideGenerationTimestamp": true,
     "modelPackage": "com.rozz.apispecificationsimplementation.model",
     "apiPackage": "com.rozz.apispecificationsimplementation",
@@ -12,5 +12,8 @@
     "withXml": true,
     "importMappings": {
     "Link": "org.springframework.hateoas.Link"
-    }
+    },
+    "useSpringBoot3": "true",
+    "useJakartaEe": "true"
+    
 }
