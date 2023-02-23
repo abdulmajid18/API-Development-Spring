@@ -1,13 +1,13 @@
-package com.rozz.apispecificaionsimplementation;
+package com.rozz.api.apispecification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiSpecificaionsImplementationApplication {
+public class ApiSpecificationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiSpecificaionsImplementationApplication.class, args);
+		SpringApplication.run(ApiSpecificationApplication.class, args);
 	}
 
 }

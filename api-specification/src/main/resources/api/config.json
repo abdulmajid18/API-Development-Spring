@@ -2,9 +2,9 @@
     "library": "spring-mvc",
     "dateLibrary": "java17",
     "hideGenerationTimestamp": true,
-    "modelPackage": "com.rozz.apispecificationsimplementation.model",
-    "apiPackage": "com.rozz.apispecificationsimplementation",
-    "invokerPackage": "com.rozz.apispecificationsimplementation",
+    "modelPackage": "com.rozz.api.apispecification.model",
+    "apiPackage": "com.rozz.api.apispecification",
+    "invokerPackage": "com.rozz.api.apispecification",
     "serializableModel": true,
     "useTags": true,
     "useGzipFeature" : true,
@@ -12,8 +12,6 @@
     "withXml": true,
     "importMappings": {
     "Link": "org.springframework.hateoas.Link"
-    },
-    "useSpringBoot3": "true",
-    "useJakartaEe": "true"
+    }
     
 }
