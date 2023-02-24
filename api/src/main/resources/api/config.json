@@ -1,0 +1,19 @@
+{
+    "library": "spring-mvc",
+    "useSpringBoot3": true,
+    "useJakartaEe": true,
+    "dateLibrary": "java8",
+    "hideGenerationTimestamp": true,
+    "modelPackage": "com.rozz.api-specification.api.model",
+    "apiPackage": "com.rozz.api-specification.api",
+    "invokerPackage": "com.rozz.api-specification.api",
+    "serializableModel": true,
+    "useTags": true,
+    "useGzipFeature" : true,
+    "hateoas": true,
+    "withXml": true,
+    "importMappings": {
+    "Link": "org.springframework.hateoas.Link"
+    }
+    
+}
