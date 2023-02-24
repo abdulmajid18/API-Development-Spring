@@ -10,4 +10,6 @@ public class ApiSpecificationApplication {
 		SpringApplication.run(ApiSpecificationApplication.class, args);
 	}
 
+	
+
 }
