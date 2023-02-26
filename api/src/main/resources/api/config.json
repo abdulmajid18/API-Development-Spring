@@ -2,7 +2,7 @@
     "library": "spring-mvc",
     "useSpringBoot3": true,
     "useJakartaEe": true,
-    "dateLibrary": "java8",
+    "dateLibrary": "java18",
     "hideGenerationTimestamp": true,
     "modelPackage": "com.rozz.api-specification.api.model",
     "apiPackage": "com.rozz.api-specification.api",
