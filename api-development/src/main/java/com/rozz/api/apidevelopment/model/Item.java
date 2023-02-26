@@ -8,6 +8,12 @@ public class Item implements Serializable {
     private Integer quantity;
     private Double unitPrice;
 
+    public Item(String id, Integer quantity, Double unitPrice) {
+        this.id = id;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+    }
+
     public Item id(String id) {
         this.id = id;
         return this;
