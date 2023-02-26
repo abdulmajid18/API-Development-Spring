@@ -1,10 +1,10 @@
-package com.rozz.apispecification.api;
+package com.rozz.api.apidevelopment;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiApplicationTests {
+class ApiDevelopmentApplicationTests {
 
 	@Test
 	void contextLoads() {
