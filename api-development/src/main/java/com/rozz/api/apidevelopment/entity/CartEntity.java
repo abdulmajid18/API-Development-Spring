@@ -22,4 +22,23 @@ public class CartEntity {
     @OneToOne
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     private UserEntity user;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public CartEntity setId(UUID id) {
+        this.id = id;
+        return this;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public CartEntity setUser(UserEntity user) {
+        this.user = user;
+        return this;
+    }
+
 }
