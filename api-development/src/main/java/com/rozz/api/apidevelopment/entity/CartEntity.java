@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Collections;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -27,6 +29,7 @@ public class CartEntity {
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
     private UserEntity user;
 
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CART_ITEM", joinColumns = @JoinColumn(name = "CART_ID"), inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
     private List<ItemEntity> items = Collections.emptyList();
 
