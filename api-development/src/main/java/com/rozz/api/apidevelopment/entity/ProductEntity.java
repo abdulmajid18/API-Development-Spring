@@ -2,12 +2,14 @@ package com.rozz.api.apidevelopment.entity;
 
 import java.math.BigDecimal;
 import java.util.UUID;
+import java.util.List;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
@@ -36,6 +38,9 @@ public class ProductEntity {
 
     @Column(name = "IMAGE_URL")
     private String imageUrl;
+
+    @OneToMany(mappedBy = "product")
+    private List<ItemEntity> items;
 
     public ProductEntity(UUID id, @NotNull(message = "Product name is required.") String name,
             String description, BigDecimal price, int count, String imageUrl) {
