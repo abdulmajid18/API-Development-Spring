@@ -26,8 +26,8 @@ public class CartEntity {
     private UUID id;
 
     @OneToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
-    private UserEntity user;
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID")
+    private CustomerEntity customer;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CART_ITEM", joinColumns = @JoinColumn(name = "CART_ID"), inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
@@ -42,12 +42,12 @@ public class CartEntity {
         return this;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public CustomerEntity getCustomer() {
+        return customer;
     }
 
-    public CartEntity setUser(UserEntity user) {
-        this.user = user;
+    public CartEntity setCustomer(CustomerEntity user) {
+        this.customer = user;
         return this;
     }
 
@@ -69,12 +69,12 @@ public class CartEntity {
             return false;
         }
         CartEntity that = (CartEntity) o;
-        return user.equals(that.user) && Objects.equals(items, that.items);
+        return customer.equals(that.customer) && Objects.equals(items, that.items);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, items);
+        return Objects.hash(customer, items);
     }
 
 }
