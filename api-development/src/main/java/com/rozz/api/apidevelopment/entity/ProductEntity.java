@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.List;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,8 @@ public class ProductEntity {
     @Column(name = "ID", updatable = false, nullable = false)
     private UUID id;
 
+    @NotNull(message = "Product name is required.")
+    @Basic(optional = false)
     @Column(name = "NAME")
     private String name;
 
