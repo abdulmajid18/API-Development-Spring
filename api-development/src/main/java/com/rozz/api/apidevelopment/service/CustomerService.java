@@ -1,13 +1,17 @@
 package com.rozz.api.apidevelopment.service;
 
 import java.util.Optional;
+import java.util.List;
 
-import com.rozz.api.apidevelopment.entity.CustomerEntity;
+import com.rozz.api.apidevelopment.dto.CustomerRequest;
+import com.rozz.api.apidevelopment.dto.CustomerResponse;
 
 public interface CustomerService {
-    public Optional<CustomerEntity> getCustomerById(String id);
+    public Optional<CustomerResponse> getCustomerById(String id);
 
-    public Iterable<CustomerEntity> getAllCustomers();
+    public List<CustomerResponse> getAllCustomers();
 
     public void deleteCustomerById(String id);
+
+    public void createCustomer(CustomerRequest customerRequest);
 }
