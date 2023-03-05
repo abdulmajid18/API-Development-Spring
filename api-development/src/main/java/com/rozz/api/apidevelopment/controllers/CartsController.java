@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.http.ResponseEntity.ok;
 
 import com.rozz.api.apidevelopment.apis.CartApi;
-import com.rozz.api.apidevelopment.model.Cart;
-import com.rozz.api.apidevelopment.model.Item;
+import com.rozz.api.apidevelopment.dto.Cart;
+import com.rozz.api.apidevelopment.dto.Item;
 
 @RestController
 public class CartsController implements CartApi {
