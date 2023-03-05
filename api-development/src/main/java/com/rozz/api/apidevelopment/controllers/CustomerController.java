@@ -1,54 +1,56 @@
 package com.rozz.api.apidevelopment.controllers;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.rozz.api.apidevelopment.dto.CustomerRequest;
+import com.rozz.api.apidevelopment.dto.CustomerResponse;
+import com.rozz.api.apidevelopment.service.CustomerService;
+import static org.springframework.http.ResponseEntity.ok;
+import static org.springframework.http.ResponseEntity.accepted;
+import static org.springframework.http.ResponseEntity.notFound;
+
+import org.springframework.http.HttpStatus;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
+    private CustomerService service;
+
+    public CustomerController(CustomerService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createCustomer(@RequestBody CustomerRequest customerRequest) {
+        service.createCustomer(customerRequest);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerResponse>> getAllCustomers() {
+        return ok(service.getAllCustomers());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerResponse> getCustomerById(@PathVariable("id") String id) {
+        return service.getCustomerById(id).map(ResponseEntity::ok).orElse(notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomerById(@PathVariable("id") String id) {
+        service.deleteCustomerById(id);
+        return accepted().build();
+    
+    }
 
 }
-
-// @RestController
-// public class CustomerController implements CustomerApi {
-
-// private final UserRepresentationModelAssembler assembler;
-// private final AddressRepresentationModelAssembler addrAssembler;
-// private final CardRepresentationModelAssembler cardAssembler;
-// private UserService service;
-
-// public CustomerController(UserService service,
-// UserRepresentationModelAssembler assembler,
-// AddressRepresentationModelAssembler addrAssembler,
-// CardRepresentationModelAssembler cardAssembler) {
-// this.service = service;
-// this.assembler = assembler;
-// this.addrAssembler = addrAssembler;
-// this.cardAssembler = cardAssembler;
-// }
-
-// @Override
-// public ResponseEntity<Void> deleteCustomerById(String id) {
-// service.deleteCustomerById(id);
-// return accepted().build();
-// }
-
-// @Override
-// public ResponseEntity<List<Address>> getAddressesByCustomerId(String id) {
-// return service.getAddressesByCustomerId(id).map(addrAssembler::toListModel)
-// .map(ResponseEntity::ok).orElse(notFound().build());
-// }
-// @Override
-// public ResponseEntity<List<User>> getAllCustomers() {
-// return ok(assembler.toListModel(service.getAllCustomers()));
-// }
-
-// @Override
-// public ResponseEntity<Card> getCardByCustomerId(String id) {
-// return
-// service.getCardByCustomerId(id).map(cardAssembler::toModel).map(ResponseEntity::ok)
-// .orElse(notFound().build());
-// }
-
-// @Override
-// public ResponseEntity<User> getCustomerById(String id) {
-// return
-// service.getCustomerById(id).map(assembler::toModel).map(ResponseEntity::ok)
-// .orElse(notFound().build());
-// }
-// }
