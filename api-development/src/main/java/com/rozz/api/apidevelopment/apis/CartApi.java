@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import com.rozz.api.apidevelopment.model.Item;
+import com.rozz.api.apidevelopment.dto.Item;
 import com.rozz.api.apidevelopment.utils.ApiUtil;
 
 public interface CartApi {
