@@ -3,6 +3,7 @@ package com.rozz.api.apidevelopment.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import com.rozz.api.apidevelopment.dto.ProductResponse;
 import com.rozz.api.apidevelopment.service.ProductService;
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.ok;
+import static org.springframework.http.ResponseEntity.notFound;
 import java.util.List;
 
 @RestController
@@ -36,6 +38,12 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
         return ok(service.getAllProducts());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductResponse> getProductById(@PathVariable String id) {
+        return service.getProductById(id).map(ResponseEntity::ok).orElse(notFound().build());
+
     }
 
 }
