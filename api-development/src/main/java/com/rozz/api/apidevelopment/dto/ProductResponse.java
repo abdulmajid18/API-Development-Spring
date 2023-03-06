@@ -21,6 +21,10 @@ public class ProductResponse {
         this.imageUrl = imageUrl;
     }
 
+    public ProductResponse() {
+
+    }
+
     public UUID getId() {
         return id;
     }
