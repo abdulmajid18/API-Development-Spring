@@ -3,8 +3,11 @@ package com.rozz.api.apidevelopment.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.StreamSupport;
 import java.util.Collections;
 import static java.util.stream.Collectors.toList;
@@ -25,6 +28,7 @@ public class ProductServiceImpl implements ProductService {
         this.repository = repository;
     }
 
+    @Override
     public void createProduct(ProductRequest productRequest) {
         ProductEntity productEntity = new ProductEntity();
 
@@ -38,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
         log.info("Request for Creating Product Name: {}\n", productEntity.getName());
     }
 
+    @Override
     public List<ProductResponse> getAllProducts() {
         Iterable<ProductEntity> productEntities = repository.findAll();
         return toListModel(productEntities);
@@ -61,6 +66,12 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return StreamSupport.stream(entities.spliterator(), false).map(this::mapToProduct).collect(toList());
+    }
+
+    @Override
+    public Optional<ProductResponse> getProductById(String id) {
+        return repository.findById(UUID.fromString(id)).map(this::mapToProduct);
+
     }
 
 }
