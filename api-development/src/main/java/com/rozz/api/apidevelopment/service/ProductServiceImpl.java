@@ -38,7 +38,6 @@ public class ProductServiceImpl implements ProductService {
                 .setCount(productRequest.getCount())
                 .setImageUrl(productRequest.getImageUrl());
         repository.save(productEntity);
-
         log.info("Request for Creating Product Name: {}\n", productEntity.getName());
     }
 
@@ -56,7 +55,6 @@ public class ProductServiceImpl implements ProductService {
                 .setCount(productEntity.getCount())
                 .setPrice(productEntity.getPrice())
                 .setImageUrl(productEntity.getImageUrl());
-
         return productResponse;
     }
 
@@ -64,7 +62,6 @@ public class ProductServiceImpl implements ProductService {
         if (Objects.isNull(entities)) {
             return Collections.emptyList();
         }
-
         return StreamSupport.stream(entities.spliterator(), false).map(this::mapToProduct).collect(toList());
     }
 
