@@ -2,11 +2,13 @@ package com.rozz.api.apidevelopment.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import com.rozz.api.apidevelopment.dto.ProductRequest;
 import com.rozz.api.apidevelopment.entity.ProductEntity;
 import com.rozz.api.apidevelopment.repository.ProductRepository;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
     private ProductRepository repository;
