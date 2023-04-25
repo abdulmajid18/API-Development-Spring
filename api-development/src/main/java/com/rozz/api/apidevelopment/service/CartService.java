@@ -1,10 +1,9 @@
 package com.rozz.api.apidevelopment.service;
 
-import com.rozz.api.apidevelopment.entity.CartEntity;
-import com.rozz.api.apidevelopment.entity.ItemEntity;
+import com.rozz.api.apidevelopment.entity.Carts.ShoppingCart;
 
 public interface CartService {
-    public CartEntity getCartByCustomerId(String CustomerId);
+    public ShoppingCart getCartByCustomerId(String CustomerId);
 
     // public List<ItemEntity> addCartItemsByCustomerId(String customerId,
     // ItemEntity item);

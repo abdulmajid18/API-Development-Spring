@@ -1,21 +1,17 @@
-package com.rozz.api.apidevelopment.entity;
+package com.rozz.api.apidevelopment.entity.Product;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.List;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import com.rozz.api.apidevelopment.entity.Accounts.Account;
+import com.rozz.api.apidevelopment.entity.Items.Item;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "product")
-public class ProductEntity {
+public class Product {
 
     @Id
     @GeneratedValue
@@ -39,11 +35,18 @@ public class ProductEntity {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    @OneToMany(mappedBy = "product")
-    private List<ItemEntity> items;
+    @Column(name = "category")
+    private ProductCategory category;
 
-    public ProductEntity(UUID id, @NotNull(message = "Product name is required.") String name,
-            String description, BigDecimal price, int count, String imageUrl) {
+    @OneToMany(mappedBy = "product")
+    private List<Item> items;
+
+    @OneToOne
+    @JoinColumn(name = "SELLER_ID", referencedColumnName = "ID")
+    private Account seller;
+
+    public Product(UUID id, @NotNull(message = "Product name is required.") String name,
+                   String description, BigDecimal price, int count, String imageUrl) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -52,14 +55,14 @@ public class ProductEntity {
         this.imageUrl = imageUrl;
     }
 
-    public ProductEntity() {
+    public Product() {
     }
 
     public UUID getId() {
         return id;
     }
 
-    public ProductEntity setId(UUID id) {
+    public Product setId(UUID id) {
         this.id = id;
         return this;
     }
@@ -68,7 +71,7 @@ public class ProductEntity {
         return name;
     }
 
-    public ProductEntity setName(String name) {
+    public Product setName(String name) {
         this.name = name;
         return this;
     }
@@ -77,7 +80,7 @@ public class ProductEntity {
         return description;
     }
 
-    public ProductEntity setDescription(String description) {
+    public Product setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -86,7 +89,7 @@ public class ProductEntity {
         return price;
     }
 
-    public ProductEntity setPrice(BigDecimal price) {
+    public Product setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -95,7 +98,7 @@ public class ProductEntity {
         return count;
     }
 
-    public ProductEntity setCount(int count) {
+    public Product setCount(int count) {
         this.count = count;
         return this;
     }
@@ -104,7 +107,7 @@ public class ProductEntity {
         return imageUrl;
     }
 
-    public ProductEntity setImageUrl(String imageUrl) {
+    public Product setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
