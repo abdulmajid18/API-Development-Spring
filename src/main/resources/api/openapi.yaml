@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: Simple Ecommerce App
+  description: "his is a ***simple ecommerce app API*** Read more on swagger.io"
+  termsOfService: https://github.com/abdulmajid18/API-Development-Spring
+  contact:
+    name: Abdul-Majid
+    url: https://github.com/abdulmajid18/API-Development-Spring
+    email: nuhuabdulmajid58@gmail.com
+  license:
+    name: Apache2 2.0
+    url: https://github.com/abdulmajid18/API-Development-Spring
+  version: 0.0.1
+externalDocs:
+  description: Document link you want to generate along with API
+  url: https://swagger.io
+servers:
+  - url: https://ecommerce.swagger.io/v1
+    description: Development server
+tags:
+  - name: cart
+    description: Everything about cart
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: order
+    description: Operation about orders
+  - name: user
+    description: Operations about users
+components:
+  schemas:
+    Cart:
+      description: Shopping Cart of the user
+      type: object
+      properties:
+        customerId:
+          description: Id of the customer who possesses the cart
+          type: string
+        items:
+          description: Collection of items in cart.
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+    Item:
+      description: Items in shopping cart
+      type: object
+      properties:
+        id:
+          description: Item Identifier
+          type: string
+        quantity:
+          description: The item quantity
+          type: integer
+          format: int32
+        unitPrice:
+          description: The item's price per unit
+          type: number
+          format: double
+paths:
+  /api/v1/carts/{customerId}/items:
+    post:
+      tags:
+        - cart
+      summary: Adds an item in shopping cart
+      description: Adds an item to the shopping cart
+      operationId: addCartItemsByCustomerId
+      parameters:
+        - name: customerId
+          in: path
+          description: Customer Identifier
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Item object
+        content:
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/Item"
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Item"
+      responses:
+        201:
+          description: Item added successfully
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+        404:
+          description: Given customer ID doesn't exist
+          content: {}
