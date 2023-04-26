@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.toList;
 
 import com.rozz.api.apidevelopment.dto.ProductRequest;
 import com.rozz.api.apidevelopment.dto.ProductResponse;
-import com.rozz.api.apidevelopment.entity.ProductEntity;
+import com.rozz.api.apidevelopment.entity.Product.Product;
 import com.rozz.api.apidevelopment.repository.ProductRepository;
 
 @Service
@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void createProduct(ProductRequest productRequest) {
-        ProductEntity productEntity = new ProductEntity();
+        Product productEntity = new Product();
 
         productEntity.setName(productRequest.getName())
                 .setDescription(productRequest.getDescription())
@@ -43,11 +43,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> getAllProducts() {
-        Iterable<ProductEntity> productEntities = repository.findAll();
+        Iterable<Product> productEntities = repository.findAll();
         return toListModel(productEntities);
     }
 
-    private ProductResponse mapToProduct(ProductEntity productEntity) {
+    private ProductResponse mapToProduct(Product productEntity) {
         ProductResponse productResponse = new ProductResponse();
         productResponse.setId(productEntity.getId())
                 .setName(productEntity.getName())
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
         return productResponse;
     }
 
-    public List<ProductResponse> toListModel(Iterable<ProductEntity> entities) {
+    public List<ProductResponse> toListModel(Iterable<Product> entities) {
         if (Objects.isNull(entities)) {
             return Collections.emptyList();
         }

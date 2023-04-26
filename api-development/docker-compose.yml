@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: password
       PGDATA: /data/postgres
     volumes:
-      - /home/rozz/modern-api/postgresdb/database:/data/postgres
+      - C:\Users\abdul-majid.nuhu\Desktop\collections\java-spring
     ports:
       - "5332:5432"
     networks:
