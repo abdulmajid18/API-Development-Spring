@@ -15,7 +15,8 @@ public abstract class Customer {
     @Column(name = "ID", updatable = false, nullable = false)
     private UUID id;
 
-    @OneToOne(mappedBy = "customer", fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "CUSTOMER_CART", referencedColumnName = "ID")
     private ShoppingCart cart;
 
     @OneToOne

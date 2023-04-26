@@ -20,7 +20,4 @@ public class OrderLog {
     @Column(name = "STATUS")
     private OrderStatus status;
 
-    @ManyToOne
-    @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID")
-    private Order order;
 }

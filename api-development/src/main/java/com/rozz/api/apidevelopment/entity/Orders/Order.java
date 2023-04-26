@@ -1,5 +1,7 @@
 package com.rozz.api.apidevelopment.entity.Orders;
 
+import com.rozz.api.apidevelopment.entity.Accounts.Account;
+import com.rozz.api.apidevelopment.entity.Accounts.Customer;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -24,6 +26,14 @@ public class Order {
     @Column(name = "STATUS")
     private OrderStatus status;
 
+
     @OneToMany(mappedBy = "id")
     private List<OrderLog> orderLog;
+
+    @OneToOne(mappedBy = "order", fetch = FetchType.LAZY, orphanRemoval = true)
+    private Customer customer;
+
+
+//    @OneToOne(mappedBy = "id", fetch = FetchType.LAZY, orphanRemoval = true)
+//    private Account account;
 }

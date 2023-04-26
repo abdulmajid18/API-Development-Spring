@@ -5,6 +5,6 @@ import java.util.UUID;
 import com.rozz.api.apidevelopment.entity.Accounts.Customer;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<Customer, UUID> {
+public interface MemberRepository extends CrudRepository<Customer, UUID> {
 
 }

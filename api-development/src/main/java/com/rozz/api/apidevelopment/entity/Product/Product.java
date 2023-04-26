@@ -35,7 +35,8 @@ public class Product {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    @Column(name = "category")
+    @OneToOne
+    @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "ID")
     private ProductCategory category;
 
     @OneToMany(mappedBy = "product")
@@ -45,14 +46,16 @@ public class Product {
     @JoinColumn(name = "SELLER_ID", referencedColumnName = "ID")
     private Account seller;
 
-    public Product(UUID id, @NotNull(message = "Product name is required.") String name,
-                   String description, BigDecimal price, int count, String imageUrl) {
+    public Product(UUID id, String name, String description, BigDecimal price, int count, String imageUrl, ProductCategory category, List<Item> items, Account seller) {
         this.id = id;
         this.name = name;
-        this.price = price;
         this.description = description;
+        this.price = price;
         this.count = count;
         this.imageUrl = imageUrl;
+        this.category = category;
+        this.items = items;
+        this.seller = seller;
     }
 
     public Product() {
@@ -112,4 +115,30 @@ public class Product {
         return this;
     }
 
+    public ProductCategory getCategory() {
+        return category;
+    }
+
+    public Product setCategory(ProductCategory category) {
+        this.category = category;
+        return this;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public Product setItems(List<Item> items) {
+        this.items = items;
+        return this;
+    }
+
+    public Account getSeller() {
+        return seller;
+    }
+
+    public Product setSeller(Account seller) {
+        this.seller = seller;
+        return this;
+    }
 }

@@ -7,6 +7,14 @@ import java.util.UUID;
 @Entity
 @Table(name = "address")
 public class Address {
+    public Address() {}
+    public Address(String streetAddress, String city, String state, String zipCode, String country) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.country = country;
+    }
 
     @Id
     @GeneratedValue
@@ -27,6 +35,9 @@ public class Address {
 
     @Column(name = "COUNTRY")
     private String country;
+
+    @OneToOne(mappedBy = "address")
+    private Account person;
 
 
 }

@@ -1,6 +1,7 @@
 package com.rozz.api.apidevelopment.entity.Accounts;
 
 
+import com.rozz.api.apidevelopment.entity.Product.Product;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -33,14 +34,15 @@ public class Account {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-
-    @OneToOne
-    @JoinColumn(name = "ACCOUNT_ADDRESS", referencedColumnName = "ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "ID")
     private Address address;
-
 
     @Column(name = "STATUS")
     private AccountStatus status;
+
+    @OneToOne(mappedBy = "seller")
+    private Product product;
 
     public String getUserName() {
         return userName;
